@@ -4,58 +4,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>krishna Portfolio </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <title>Krishna's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1A1B2D;
+            color: #EDEDED;
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 80px;
+            background-color: #14151D;
+            padding: 0 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        nav .left {
+            font-size: 1.5rem;
+            margin-right: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #EDEDED;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #AD65F0;
+        }
+
+        nav ul li .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2C2D3F;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        nav ul li .dropdown-content a {
+            color: #EDEDED;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        nav ul li .dropdown-content a:hover {
+            background-color: #14151D;
+        }
+
+        nav ul li:hover .dropdown-content {
+            display: block;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            background-color: #EDEDED;
+            height: 3px;
+            width: 25px;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                right: 0;
+                background-color: #14151D;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background: linear-gradient(135deg, #2C2D3F 0%, #1A1B2D 100%);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content {
+            max-width: 90%;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #EDEDED;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 30px;
+            margin-top: 30px;
+            background-color: #AD65F0;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #9a4bdc;
+        }
+
+        .purple {
+            color: #AD65F0;
+        }
+
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .about,
+        .skills,
+        .projects,
+        .experience,
+        .contact {
+            background-color: #2C2D3F;
+            border-radius: 10px;
+            margin: 30px 0;
+            padding: 30px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 30px;
+            color: #AD65F0;
+        }
+
+        .mefont {
+            font-size: 22px;
+
+        }
+
+
+        .name-colour {
+            color: #9a4bdc;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill {
+            background-color: #AD65F0;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skill:hover {
+            background-color: #9a4bdc;
+        }
+
+        .project-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-card {
+            background-color: #14151D;
+            color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-item {
+            background-color: #14151D;
+            color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #AD65F0;
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #AD65F0;
+        }
+
+        .timeline-item p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .contact form {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #AD65F0;
+            background-color: #14151D;
+            color: #EDEDED;
+        }
+
+        .contact button {
+            padding: 10px 30px;
+            background-color: #AD65F0;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #9a4bdc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #14151D;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            color: #AD65F0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-links img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            display: inline-block;
+            color: #EDEDED;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #AD65F0;
+        }
+
+        .social-links i {
+            font-size: 30px;
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Header Section -->
     <header>
         <nav>
-            <div class="left">Krishna's Portfolio</div>
-            <div class="right">
-                <UL>
-                    <li> <a href=""> Home</a> </li>
-                    <li> <a href=""> About </a></li>
-                    <li> <a href="">Services</a> </li>
-                    <li> <a href="">Projects</a></li>
-                    <li><a href=""> Contact me</a></li>
-                </UL>
+            <div class="left">
+                <span>Krishna's Portfolio</span>
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </div>
+            <ul id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
-        <section class="firstsection">
-            <div class="leftsection">
-                Hey, I am <span class="purple">Krishna </span>
-                <div>I am a passionate  </div>
-                <span id="element"></span>
 
-            </div>
-            <div class="rightsection">
-                <img src="image 1.png" alt="image is not load">
-            </div>
-        </section>
-        <hr>
-        <section class="secondsection">
-            <span class="text-grey">I have done so far</span>
-            <h1>Past Experience</h1>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm <span class="name-colour"> Krishna</span> <br>And I am a passionate </h1>
+            <h2><span id="typed-text"></span></h2>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
 
-    </main>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p class="mefont">I am Krishna Mohan Mishra, a Python and Machine Learning/AI developer from Gorakhpur, Uttar
+            Pradesh. I have graduated with a Bachelor of Computer Applications (BCA) with a specialization in Data
+            Science and AI. As a fresher, I am eager to begin my career and contribute my skills to dynamic companies. I
+            am passionate about learning and applying the latest technologies to solve real-world problems and am ready
+            to take on challenges in a professional environment..</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+        <div class="skills-list">
+            <div class="skill">Python</div>
+            <div class="skill">Machine Learning </div>
+            <div class="skill"> Artificial Intelligence. </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="project-gallery">
+            <div class="project-card">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Description of project 1.</p>
+            </div>
+            <div class="project-card">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>Description of project 2.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Job Title - Company</h3>
+                <p>Details about the experience.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Job Title - Company</h3>
+                <p>Details about the experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Krishna Mohan Mishra </p>
+        <div class="social-links">
+            <a class="logolink" href="https://www.instagram.com/krsna_xxii/" target="_blank"><i
+                    class="fa-brands fa-instagram"></i> </a>
+            <a class="logolink" href="https://www.linkedin.com/in/krishna-mohan-mishra-37734a247/" target="_blank"><i
+                    class="fa-brands fa-linkedin"></i> </a>
+            <a class="logolink" href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </footer>
+
+    <!-- Load library from the CDN -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-     <!-- Setup and start animation! -->
-  <script>
-    var typed = new Typed('#element', {
-      strings: ['Artificial Intelligence ', 'Machine Learning','Python developer.'],
-      typeSpeed: 50,
-    });
-  </script>
-</body>
+
+    <!-- JavaScript for Typed.js -->
+    <script>
+        var typed = new Typed('#typed-text', {
+            strings: ['Machine Learning.', 'Artificial Intelligence.', 'Python Developer.'],
+            typeSpeed: 50,
+            backSpeed: 25,
+            backDelay: 1000,
+            startDelay: 500,
+            loop: true
+        });
+    </script>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            var navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('show');
+        });
+    </script>
+
 </body>
 
 </html>
