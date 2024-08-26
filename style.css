@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(0, 0, 43);
+    background-color:#1D1E2C;
     color: white;
     font-family: "Poppins", sans-serif;
 }
@@ -14,7 +14,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: 80px;
-    background-color: rgb(18, 18, 62);
+    background-color:#14151d;
 }
 
 nav ul {
@@ -39,6 +39,13 @@ nav ul li a:hover {
     font-size: 1.02rem;
 
 }
+main hr {
+    border: 0;
+   background-color:#fafafc ; 
+   height: 1.2px;
+   margin: 40px 84px;
+
+}
 
 .left {
     font-size: 1.5rem;
@@ -47,7 +54,7 @@ nav ul li a:hover {
 .firstsection {
     display: flex;
     justify-content: space-around;
-    margin: 80px 0;
+    margin: 110px 0;
     align-items: center;
 
 }
@@ -60,7 +67,7 @@ nav ul li a:hover {
 
 .leftsection {
     width: 30px;
-    font-size: 2rem;
+    font-size: 2.7rem;
 }
 
 .righttsection {
@@ -75,6 +82,16 @@ img {
     color: rgb(173, 101, 240);
 }
 
+.text-grey {
+    color: grey;
+}
 #element {
     color: rgb(173, 101, 240);
+}
+
+.secondsection {
+    max-width: 80vw;
+    margin: auto;
+    height: 80vh;
+
 }
